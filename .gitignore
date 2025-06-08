@@ -1,0 +1,19 @@
+# Terraform state
+*.tfstate
+*.tfstate.backup
+.terraform/
+crash.log
+
+# Local values
+terraform.tfvars
+terraform.tfvars.json
+
+# Sensitive values
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Plan files
+*.tfplan
+
