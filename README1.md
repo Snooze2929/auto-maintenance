@@ -4,14 +4,13 @@
 
 
 １,Auroraのデプロイ
-**`cd ~/auto-maintenance/database` 
-`terraform init` 
-`terraform plan` 
-`terraform apply` 
-**
+cd ~/auto-maintenance/database 
+terraform init 
+terraform plan 
+terraform apply 
 
-**`cd ~/auto-maintenance/secret-manager` 
-`terraform init` 
-`terraform plan` 
-`terraform apply` 
-**
+2,SecretsManagerのデプロイ
+cd ~/auto-maintenance/secret-manager 
+terraform init 
+terraform plan 
+terraform apply 
