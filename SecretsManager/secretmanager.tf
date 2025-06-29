@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "aurora_pg_secret" {
-  name        = "aurora-pg-connect"
+  name        = "aurora-pg-secret"
   description = "Aurora PostgreSQL connection string"
   kms_key_id  = "alias/aws/secretsmanager"
 }

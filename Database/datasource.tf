@@ -20,13 +20,9 @@ data "aws_cloudformation_export" "private_subnet2" {
 }
 
 locals {
-  db_creds = {
-    username = "yourusername"
-    password = "yourpassword"
-  }
-
-  kms_alias_arn = "arn:aws:kms:ap-northeast-1:190805427049:alias/aws/rds"
+  kms_alias_arn = "arn:aws:kms:ap-northeast-1:${var.aws_account_id}:alias/aws/rds"
 }
+
 
 
 
