@@ -1,9 +1,9 @@
 output "db_username" {
-  value = local.db_creds.username
+  value = aws_rds_cluster.auto_maintenance_pg_cluster.master_username
 }
 
 output "db_password" {
-  value = local.db_creds.password
+  value = random_password.db_password.result
   sensitive = true
 }
 

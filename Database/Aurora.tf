@@ -1,12 +1,20 @@
 # -------------------------------------
+# パスワード生成
+# -------------------------------------
+resource "random_password" "db_password"{
+  length  = 16
+  special = true
+}
+
+# -------------------------------------
 # Aurora Cluster
 # -------------------------------------
 resource "aws_rds_cluster" "auto_maintenance_pg_cluster" {
   cluster_identifier              = "aurora-pg-cluster"
   engine                          = "aurora-postgresql"
   engine_version                  = "15.10"
-  master_username                 = local.db_creds.username
-  master_password                 = local.db_creds.password
+  master_username                 = "dbadmin"
+  master_password                 = random_password.db_password.result
   database_name                   = "auto_maintenance_db"
   vpc_security_group_ids          = [data.aws_cloudformation_export.rds_security_group.value]
   db_subnet_group_name            = aws_db_subnet_group.auto-maintenance-subnet-group.name
