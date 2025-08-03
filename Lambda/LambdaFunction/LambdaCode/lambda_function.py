@@ -55,7 +55,7 @@ def select_pg_stat_exe(secret):
 
 def lambda_handler(event, context):
 
-    secret_name = "aurora-pg-connect"
+    secret_name = "auto-maintenance-secret"
     get_secret_result = get_secret(secret_name)
 
     print(get_secret_result)

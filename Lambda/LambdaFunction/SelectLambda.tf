@@ -34,8 +34,8 @@ resource "aws_lambda_function" "StateSelect_Lambda" {
 
   vpc_config {
     subnet_ids         = [
-      data.aws_cloudformation_export.public_subnet1.value,
-      data.aws_cloudformation_export.public_subnet2.value
+      data.aws_cloudformation_export.private_subnet1.value,
+      data.aws_cloudformation_export.private_subnet2.value
     ]
     security_group_ids = [data.aws_cloudformation_export.security_group_ec2.value]
   }

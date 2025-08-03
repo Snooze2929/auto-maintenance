@@ -1,6 +1,7 @@
 ## はじめに
 デプロイ手順の記載をします。
 以下のqiitaの記事用です。
+https://qiita.com/Snooze1229/items/7c1cd6cc7fc0efebef14
 
 
 １,Auroraのデプロイ  

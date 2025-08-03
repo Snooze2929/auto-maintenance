@@ -13,12 +13,12 @@ data "archive_file" "lambda" {
   output_path = "lambda_function.zip"
 }
 
-data "aws_cloudformation_export" "public_subnet1" {
-  name = "MakeNetwork-PublicSubnet1A"
+data "aws_cloudformation_export" "private_subnet1" {
+  name = "MakeNetwork-PrivateSubnet1A"
 }
 
-data "aws_cloudformation_export" "public_subnet2" {
-  name = "MakeNetwork-PublicSubnet1C"
+data "aws_cloudformation_export" "private_subnet2" {
+  name = "MakeNetwork-PrivateSubnet1C"
 }
 
 data "aws_cloudformation_export" "security_group_ec2" {

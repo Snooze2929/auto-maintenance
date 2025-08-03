@@ -1,5 +1,5 @@
 resource "aws_secretsmanager_secret" "aurora_pg_secret" {
-  name        = "aurora-pg-secret"
+  name        = "auto-maintenance-secret"
   description = "Aurora PostgreSQL connection string"
   kms_key_id  = "alias/aws/secretsmanager"
 }
@@ -15,4 +15,5 @@ resource "aws_secretsmanager_secret_version" "aurora_pg_secret_value" {
     dbname   = data.terraform_remote_state.aurora.outputs.db_name
   })
 }
+
 
