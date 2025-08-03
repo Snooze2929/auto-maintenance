@@ -37,14 +37,11 @@ def select_pg_stat_exe(secret):
 
     try:
         conn.autocommit = True
-        with conn.cursor() as cursor:
-            cursor.execute("""
-                SELECT state, query, datname
-                FROM pg_stat_activity
-                WHERE query ILIKE 'VACUUM%' OR query ILIKE 'REINDEX%' OR query ILIKE 'ANALYZE%'
-            """)
-            result = cursor.fetchall()
-            print(result)
+        with conn.cursor() as cur:
+            cur.execute("SELECT pid, usename, datname, query FROM pg_stat_activity WHERE state = 'active' AND usename <> 'rdsadmin';")
+            
+            result = cur.fetchall()
+
             return result
 
     except Exception as e:
