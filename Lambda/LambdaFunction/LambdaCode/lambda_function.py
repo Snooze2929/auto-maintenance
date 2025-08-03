@@ -54,9 +54,7 @@ def lambda_handler(event, context):
 
     secret_name = "auto-maintenance-secret"
     get_secret_result = get_secret(secret_name)
-
-    print(get_secret_result)
-
+    
     status = select_pg_stat_exe(get_secret_result)
 
     print(status)
