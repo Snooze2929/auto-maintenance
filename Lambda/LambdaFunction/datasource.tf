@@ -7,9 +7,15 @@ data "terraform_remote_state" "psycopg2_layer" {
   }
 
 
-data "archive_file" "lambda" {
+data "archive_file" "select_lambda" {
   type        = "zip"
-  source_dir  = "./LambdaCode"
+  source_dir  = "./SelectLambdaCode"
+  output_path = "lambda_function.zip"
+}
+
+data "archive_file" "cmd_lambda" {
+  type        = "zip"
+  source_dir  = "./CmdExeLambdaCode"
   output_path = "lambda_function.zip"
 }
 

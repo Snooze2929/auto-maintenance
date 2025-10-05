@@ -17,3 +17,9 @@ override.tf.json
 # Plan files
 *.tfplan
 
+# lambda
+CmdExeLambdaCode/
+CmdExeLambda.tf
+
+# ZIPファイル
+*.zip

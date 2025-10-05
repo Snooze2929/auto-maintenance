@@ -5,9 +5,6 @@ import traceback
 import logging
 from botocore.exceptions import ClientError
 
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
-
 def get_secret(secret_name, region_name="ap-northeast-1"):
     client = boto3.client("secretsmanager", region_name=region_name)
     try:
@@ -31,30 +28,3 @@ def get_db_connection(secret):
         host=secret["host"],
         port=secret["port"]
     )
-
-def select_pg_stat_exe(secret):
-    conn = get_db_connection(secret)
-
-    try:
-        conn.autocommit = True
-        with conn.cursor() as cur:
-            cur.execute("SELECT pid, usename, datname, query FROM pg_stat_activity WHERE state = 'active' AND usename <> 'rdsadmin';")
-            
-            result = cur.fetchall()
-
-            return result
-
-    except Exception as e:
-        logger.error("exception: %s", e)
-        logger.error(traceback.format_exc())
-    finally:
-        conn.close()
-
-def lambda_handler(event, context):
-
-    secret_name = "auto-maintenance-secret"
-    get_secret_result = get_secret(secret_name)
-    
-    status = select_pg_stat_exe(get_secret_result)
-
-    print(status)
