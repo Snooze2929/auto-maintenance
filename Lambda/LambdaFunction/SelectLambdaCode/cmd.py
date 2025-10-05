@@ -13,10 +13,10 @@ def select_pg_stat_exe(secret):
         conn.autocommit = True
         with conn.cursor() as cur:
             cur.execute("""
-                        SELECT state, query, datname
+                        SELECT pid, usename, datname, query
                         FROM pg_stat_activity
-                        WHERE (query LIKE 'VACUUM%' OR query LIKE 'ANALYZE%')
-                        AND state = 'active';
+                        WHERE state = 'active'
+                        AND usename <> 'rdsadmin';
                         """)
             
             result = cur.fetchall()
